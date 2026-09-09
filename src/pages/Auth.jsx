@@ -31,6 +31,10 @@ export default function Auth(){
   "The world awaits your return.",
   "Welcome back"
 ])
+
+function onSubmit(){
+    
+}
     return(
         <main className='h-full flex justify-center items-center flex-col gap-6 px-4 py-8'>
             <h1 className="font-bold text-3xl text-center text-white-text md:text-5xl">{messages[Math.floor(Math.random() * messages.length)]}</h1>
