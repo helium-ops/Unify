@@ -4,7 +4,7 @@ import logo from "../assets/logos/png/Logo (1).png";
 
 export default function Header() {
     return (
-        <header className="flex justify-between items-center px-3 py-1  h-[11.72%]">
+        <header className="flex justify-between items-center px-3 py-0.5  h-[11.72%]">
             <div className="flex items-center justify-center gap-2">
                 <img
                     src={logo}
