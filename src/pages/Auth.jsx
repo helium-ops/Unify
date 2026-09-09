@@ -28,14 +28,25 @@ export default function Auth(){
   "Your digital world awaits.",
   "Step into what’s yours.",
   "Your story is waiting.",
-  "The world awaits your return."
+  "The world awaits your return.",
+  "Welcome back"
 ])
     return(
-        <main className='h-full flex justify-center items-center'>
-            <h1>{messages[Math.floor(Math.random() * messages.length)]}</h1>
-            <section>
-        <form>
-            
+        <main className='h-full flex justify-center items-center flex-col gap-6 px-4 py-8'>
+            <h1 className="font-bold text-3xl text-center text-white-text md:text-5xl">{messages[Math.floor(Math.random() * messages.length)]}</h1>
+            <section className='bg-white-surface flex justify-center items-center flex-col w-full max-w-[420px] relative shadow-[0_30px_70px_-25px_rgba(23,26,24,0.28)] rounded-[24px] border border-white-borders p-6 md:p-8'>
+                <h1 className="font-semibold text-2xl text-white-text mb-6">Log in</h1>
+        <form className="flex justify-start items-center gap-4 flex-col w-full">
+            <div className="flex justify-center flex-col gap-3 w-full">
+                <input type="email" placeholder="name@example.com" className="w-full rounded-xl border border-white-borders bg-white-background px-4 py-3 text-sm text-white-text placeholder:text-black/40 transition duration-200 focus:border-black-accent focus:outline-none focus:ring-2 focus:ring-black-accent/30" />
+                <input type="password" placeholder="●●●●●●●●" className="w-full rounded-xl border border-white-borders bg-white-background px-4 py-3 text-sm text-white-text placeholder:text-black/40 transition duration-200 focus:border-black-accent focus:outline-none focus:ring-2 focus:ring-black-accent/30" />
+                <button className="mt-1 w-full rounded-xl bg-white-accent px-4 py-3 text-base font-semibold text-white-background shadow-[0_18px_30px_-18px_rgba(8,120,23,0.8)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_32px_-18px_rgba(8,120,23,0.9)]">Sign in</button>
+            </div>
+            <label className="flex w-full items-center justify-start gap-2 text-sm text-white-text/80">
+                <input type="checkbox" name="" id="" className="h-4 w-4 rounded border-white-borders bg-white-background text-white-accent focus:ring-black-accent" />
+                <h4>Remember me</h4>
+            </label>
+            <p className="text-sm text-white-text/80">Don't have an account? <span className="font-semibold text-white-accent cursor-pointer">Sign up</span></p>
         </form>
         </section>
         </main>

@@ -10,7 +10,7 @@ function App() {
             <BrowserRouter>
              
            <Header/>
-           <div className="h-[92%] w-full">
+           <div className="h-[88.38%] w-full fixed bottom-2">
             <AuthContext>
               <Routes>
                 <Route path='/' element={<Auth/>}></Route>
