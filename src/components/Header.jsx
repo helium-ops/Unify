@@ -8,7 +8,7 @@ export default function Header() {
             <div className="flex items-center justify-center gap-2">
                 <img
                     src={logo}
-                    alt="Unify logo"
+                    alt="Unity logo"
                     className="w-10 h-10 object-contain"
                 />
                 <h1 className="font-bold text-[2vw] mb-1">Unify</h1>
