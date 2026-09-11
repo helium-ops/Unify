@@ -7,7 +7,7 @@ export default function Header() {
     const { loggedIn, logout } = useAuth();
     return (
         <header className="flex justify-between items-center px-3 py-0.5  h-[11.72%]">
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-2 transition duration-300 hover:scale-110">
                 <img
                     src={logo}
                     alt="Unity logo"
