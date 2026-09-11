@@ -2,23 +2,63 @@ import { createContext, useContext, useState } from 'react';
 
 export const AuthContext = createContext(null);
 
-export default function Auth({children}){
+export function AuthProvider({ children }) {
     const [loggedIn, setLoggedIn] = useState(false);
-    const [signIn, setSignin] = useState(true);
-    const [user, setUser] = useState(localStorage.getItem(localStorage.getIten('currentUserEmail') ? 'currentUserEmail' : '[]'))
+    const [signIn, setSignIn] = useState(true);
 
-    function signUp(email, password){
-       const users = localStorage.getItem(localStorage.getItem('currentUserEmail') ? 'currentUserEmail' : '[]');
-       
+    const [user, setUser] = useState(
+        localStorage.getItem('currentUserEmail') ? {email: localStorage.getItem('currentUserEmail')} : null
+    );
+
+
+    function signUp(email, password) {
+      const users = JSON.parse(localStorage.getItem('users') || '[]')
+      if(users.find(user => user.email === email)){
+       alert("Email already used");
+      }
+      else{
+        const newUser = {email, password};
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('currentUserEmail', newUser.email);
+        setLoggedIn(true);
+      }
     }
-    return(
-     <AuthContext.Provider value={{loggedIn, setLoggedIn, signIn, setSignIn, signUp}}>
-       {children}
-     </AuthContext.Provider>
-    )
+
+    
+
+    function login(email, password){
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        const mainUser = users.find((user)=> user.email === email && user.password === password);
+        setLoggedIn(true);
+        localStorage.setItem('currentUserEmail', mainUser.email);
+    }
+
+    function logout(){
+        setUser(null);
+        setLoggedIn(false);
+        localStorage.removeItem('currentUserEmail');
+    }
+
+    return (
+        <AuthContext.Provider
+            value={{
+                loggedIn,
+                setLoggedIn,
+                signIn,
+                setSignIn,
+                user,
+                setUser,
+                signUp,
+                login,
+                logout
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
 }
 
-export function useAuth(){
-   const auth = useContext(AuthContext);
-   return auth;
+export function useAuth() {
+    return useContext(AuthContext);
 }
